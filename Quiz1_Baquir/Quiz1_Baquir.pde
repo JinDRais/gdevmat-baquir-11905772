@@ -1,5 +1,4 @@
-float amplitude = 100;
-float frequency;
+float amplitude = 1, frequency  = 0, time = 0.0f, dt = .1f;
 
 // the function that gets called at the very first frame
 void setup()
@@ -14,9 +13,9 @@ void draw()
 {
   background(0); // sets the background color of the whole window
   
-  //circle(0, 0, 15); // draws a circle at x,y with thickness
+  //circle(0, 0, 15); 
   
-  //strokeWeight(2); //changes the thickness of the line below it
+  //strokeWeight(2); 
   //color white = color(255,255,255); // declare a color variable
   //fill (white); // fills it with the color selected
   //stroke(white); // all the strokes will be with the color selected
@@ -24,30 +23,20 @@ void draw()
    drawCartesianPlane();
    drawLinearFunction();
    drawQuadraticFunction();
-   
-  //Sine Wave   
-  color blue = color (0,0,255);
-  fill(blue);
-  stroke(blue);
-
-  for (float x = -30; x <=30; x+=0.01f)
-  {
-    circle(x * 10, (float)Math.sin(x) * amplitude, 1);
-  }
+   drawSineWave();
+  
 }
 
 void drawCartesianPlane()
 {
-  strokeWeight(3);
+  strokeWeight(3); //changes the thickness of the line below it
   color white = color(255,255,255);
   fill (white);
   stroke(white);
-  line(-0, -300, 0, 300);
-  line(-300, -0, 300, 0);
-  
-  
-  //Sine Wave
-  for (int i = -300; i <= 300; i+=10)
+  line(-0, -720, 0, 720);
+  line(-720, -0, 720, 0);
+ 
+  for (int i = -360; i <= 360; i+=10)
   {
     line (i, -2, i, 2);
     line (-2, i, 2, i);
@@ -68,10 +57,9 @@ void drawLinearFunction()
  
  for (float x = -200; x <= 200; x+=0.1f)
  {
-   circle(x, (x * -5) + 2, 5);
+   circle(x, (x * -5) + 2, 5); // draws a circle at x,y with thickness
  }
- 
- 
+
 }
 
 void drawQuadraticFunction()
@@ -91,4 +79,42 @@ void drawQuadraticFunction()
  {
    circle(x * 10, ((float)Math.pow(x, 2) - (x * 15) - 3), 5);
  }
+}
+
+void drawSineWave()
+{
+  color blue = color (0,0,255);
+  fill(blue);
+  stroke(blue);
+
+  for (float x = -300; x <=300; x+=0.01f)
+  {
+    circle(x * 300, (float)Math.sin(x) * amplitude, 1);
+  } 
+  
+}
+
+void keyPressed()
+{
+  if (key == CODED)
+  {
+    if (keyCode == UP)
+    {
+      amplitude+=10; 
+    }
+    else if (keyCode == DOWN)
+    {
+      amplitude-=10; 
+    }
+    else if (keyCode == RIGHT)
+    {
+      time += 0.1f; 
+      print("get quicker");
+    }
+    else if (keyCode == LEFT)
+    {
+      time -= 0.1f;
+      print("get slower");
+    }
+  }
 }
