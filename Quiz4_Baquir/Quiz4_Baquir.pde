@@ -11,7 +11,7 @@ Walker perlinWalker = new Walker();
 
 void draw()
 {
-  
+  colorMode(RGB, 255);
   noStroke();
   
   perlinWalker.perlinWalk();

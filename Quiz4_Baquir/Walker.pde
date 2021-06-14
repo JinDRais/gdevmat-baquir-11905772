@@ -4,9 +4,9 @@ public class Walker
   public float x;
   public float y;
   public float tx = 0, ty = 10000; 
-  public float rt = 0;
-  public float gt = 0;
-  public float bt = 0;
+  public float rt = 255;
+  public float gt = 150;
+  public float bt = 100;
   public float red;
   public float green;
   public float blue;
@@ -25,12 +25,13 @@ public class Walker
   void perlinWalk()
   {
 
-   red = map(noise(rt), 0, 1, 0, 255);
-   green = map(noise(gt), 0, 1, 0, 255);
-   blue = map(noise(bt), 0, 1, 0, 255);  
+   red = map(noise(rt + 5), 0, 1, 0, 255);
+   green = map(noise(gt + 10), 0, 1, 0, 255);
+   blue = map(noise(bt + 15), 0, 1, 0, 255);  
    
    fill(red, green, blue);
-  
+   
+   print(rt);
    
    rt +=0.01f;
    gt +=0.01f;
