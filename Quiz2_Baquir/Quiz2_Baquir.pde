@@ -23,5 +23,6 @@ void draw()
 void changeColor()
 {
   int red = int(random(256)), green = int(random(256)), blue = int(random(256)), alpha = int(random(50,101));
+  print(red + green + blue + alpha);
   fill(red, green, blue, alpha);
 }
