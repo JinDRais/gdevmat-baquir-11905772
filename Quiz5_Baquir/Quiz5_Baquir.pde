@@ -21,8 +21,8 @@ void draw()
   perlinWalker.render();
   */
   
-  /*
+  
   //for move and bound function
   bounceWalker.moveAndBounce();
-  */
+  
 }
