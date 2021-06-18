@@ -46,6 +46,7 @@ public class Walker
   
   void moveAndBounce()
   {
+    
     background(255);
     
     // add speed to the current position
