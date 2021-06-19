@@ -67,7 +67,6 @@ public class Walker
     fill(182, 52, 100);
     circle(bPosition.x, bPosition.y, 50);
   
-    
   }
   
 }

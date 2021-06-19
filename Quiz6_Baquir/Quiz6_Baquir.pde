@@ -2,7 +2,6 @@ void setup()
 {
   size(1280, 720, P3D);
   camera(0, 0, Window.eyeZ, 0, 0, 0, 0, -1, 0);
- 
 }
 
 PVector mousePos()
@@ -26,7 +25,6 @@ void draw()
   strokeWeight(5);
   stroke(0,0,0);
   line(-mouse.x / 8, -mouse.y / 8, mouse.x / 8, mouse.y / 8);
-  
   
   println(mouse.mag());
 }
