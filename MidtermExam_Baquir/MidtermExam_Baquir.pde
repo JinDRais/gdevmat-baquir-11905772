@@ -6,9 +6,6 @@ Walker[] matterList = new Walker[100];
 boolean bHSpawned = false;
 boolean oMSpawned = false;
 
-//For mouse
-PVector mPosition = new PVector();
-
 void setup()
 {
   camera(0, 0, Window.eyeZ, 0, 0, 0, 0, -1, 0);
@@ -25,18 +22,17 @@ PVector mousePos()
 
 void draw()
 {  
-  
-  //Creates the object but do not renders them yet  
+  //Creates the object but does not render them yet  
   spawnOtherMatter();
   spawnBlackHole();
   
-  //follow mouse
+  //makes the black hole follow the position of the mouse
   followMouse();
   
-  //for otherMatter
+  //All vector logic and renders are executed in this function
   simulation();
   
-  //Clear screen after 100 frames
+  //Clear screen after 1000 frames
   refresh();
 }
 
@@ -47,6 +43,7 @@ void spawnBlackHole()
     //Random spawn on screen
     blackHole.position.x = int(random(Window.left, Window.right));
     blackHole.position.y = int(random(Window.bottom, Window.top));
+    //Preset values for the blackhole in accordance to instructions
     blackHole.scale = 50;
     blackHole.r = 255;
     blackHole.g = 255;
@@ -58,6 +55,7 @@ void spawnBlackHole()
 
 void spawnOtherMatter()
 {
+    //checks if the list is spawned already
     if (!oMSpawned)
     {
       for (int i = 0; i < matterList.length; i++ )
@@ -76,7 +74,7 @@ void spawnOtherMatter()
         float xStandardDeviation = Window.windowWidth / 2, xMean = 0;
         float yStandardDeviation = Window.windowHeight / 2, yMean = 0;
           
-        //Assign necessary variables
+        //Assign necessary variables for each iteration of the walker inside the array
         matterList[i].position.x = xStandardDeviation * xGaussian + xMean;
         matterList[i].position.y = yStandardDeviation * yGaussian + yMean;
         matterList[i].scale = int(random(50));
@@ -92,18 +90,19 @@ void spawnOtherMatter()
 
 void simulation()
 {
-      background(0);
-      for(int i = 0; i < matterList.length; i++)
-      {
-        PVector direction = PVector.sub(blackHole.position, matterList[i].position);
-        matterList[i].position.add(direction.normalize()); 
-        matterList[i].render();
-        blackHole.render();
-      }  
+   background(0);
+   for(int i = 0; i < matterList.length; i++)
+   {
+     PVector direction = PVector.sub(blackHole.position, matterList[i].position);
+     matterList[i].position.add(direction.normalize()); 
+     matterList[i].render();
+     blackHole.render();
+   }  
 }
 
 void refresh()
 {
+  //Turns all necessary variables back to 0 to loop the whole program
   if (frameCount == 1000)
   {
     clear();
