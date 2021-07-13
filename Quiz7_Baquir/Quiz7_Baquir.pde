@@ -4,6 +4,9 @@ ArrayList<Walker> walkers = new ArrayList<Walker>();
 //For executing loop once, needs an if statement
 boolean spawned = false;  
 
+//100 walkers
+int walkerAmount = 100;
+
 void setup()
 {
   size(1280, 720, P3D);
@@ -35,7 +38,7 @@ void initalizeWalkers()
 {
   if (!spawned)
   {
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < walkerAmount; i++)
     {
       //Create walker inside the list
       walkers.add(new Walker());
