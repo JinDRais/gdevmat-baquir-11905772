@@ -19,11 +19,6 @@ PVector mousePos()
   return new PVector(x, y);
 }
 
-/* Vector Motion 101
-  1. Add velocity to position
-  2. Draw the object at position
-*/
-
 void draw()
 {
   //Initialize Walkers
@@ -71,5 +66,9 @@ void accelerate()
     walkers.get(i).update();
     //render
     walkers.get(i).render();
+    
+    /* //check edges
+    walkers.get(i).checkEdges(); */
+    
   }
 }
